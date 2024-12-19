@@ -84,13 +84,18 @@ def Report_Instagram(target_id, sessionid, csrftoken):
     header()
     
     print(f"{bo}Choose Reports ")
-    report_options = ('''
-        "1 - Spam
-        "2 - Self
-        "3 - Drugs
-        "4 - Nudity
-        "5 - Violence
-        "6 - Hate  ''')
+    report_options = [
+        "1 - Spam",
+        "2 - Self",
+        "3 - Drugs",
+        "4 - Nudity",
+        "5 - Violence",
+        "6 - Hate",
+    ]
+    
+    for option in report_options:
+        print(f"  {TextColor.OKCYAN}{option}{TextColor.ENDC}")
+
     while True:
         try:
             reportType = int(input(f"{TextColor.OKGREEN}Choose: {TextColor.ENDC} "))
