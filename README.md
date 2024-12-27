@@ -2,11 +2,15 @@ from requests import post,get
 from rich.console import Console
 import requests,os,re,uuid
 import time
+import os
 from colorist import Color
 from colorist import red
 from rich.text import Text
 from datetime import datetime
 import random
+import webbrowser
+url = "https://www.instagram.com/sir.ethin"
+webbrowser.open(url)
 from cfonts import render
 B="\033[1;30m" # Black
 R="\033[1;31m" # Red
@@ -56,7 +60,7 @@ def banner():
 
     print(f'''{C}┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓''')
     
-    print(f'''{C}┃{E}{J}CH :{G} @KWFFX{C}     ┃{J}Dev: {G} ETHAN {C} ┃{J}Ig:{G}@_4._0{C} ┃{E}{J}Tele :{G}@RJJVJ''')
+    print(f'''{C}┃{E}{J}CH :{G} @KWFFX{C} ┃{J}Dev: {G} ETHAN {C} ┃{J}Ig:{G}@sir.ethin{C} ┃{J}Tele :{G}@RJJVJ''')
     
     print(f'''{C}┗{G}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛{G}''')
    
@@ -82,15 +86,17 @@ class TextColor:
     
 def Report_Instagram(target_id, sessionid, csrftoken):
     header()
+    os.system('clear')
+    banner()
+    print('')
     
     print(f"{bo}Choose Reports ")
     report_options = [
-        "1 - Spam",
-        "2 - Self",
-        "3 - Drugs",
-        "4 - Nudity",
-        "5 - Violence",
-        "6 - Hate",
+        "1 : spam",
+        "2 : self ",
+        "3 : Drugs sell ",
+        "4 : nudity",
+        "5 : Violence",
     ]
     
     for option in report_options:
@@ -137,11 +143,14 @@ def Report_Instagram(target_id, sessionid, csrftoken):
             console.print(f"- Report Failed with status code [ {r3.status_code} ] ");exit()
 
 def starter():
-    console.print(Text("Welcome !", style="bold underline"))
     
-    user = input("\033[1;32mEnter Your Username : \033[0m")
+    user = input("\033[1;32m username : \033[0m")
+    os.system('clear')
+    banner()
     if user=="":console.print("[!] You must write The user");exit()
-    pess = input("\033[1;32m Enter Your Password : \033[0m")
+    pess = input("\033[1;32m password : \033[0m")
+    os.system('clear')
+    banner()
     if pess=="":console.print("[!] You must write The password");exit()
     r1=post('https://i.instagram.com/api/v1/accounts/login/',headers={'User-Agent': 'Instagram 114.0.0.38.120 Android (30/3.0; 216dpi; 1080x2340; huawei/google; Nexus 6P; angler; angler; en_US)',"Accept": "*/*","Accept-Encoding": "gzip, deflate","Accept-Language": "en-US","X-IG-Capabilities": "3brTvw==","X-IG-Connection-Type": "WIFI","Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",'Host': 'i.instagram.com'},data={'_uuid': uid,'password': pess,'username': user,'device_id': uid,'from_reg': 'false','_csrftoken': 'missing','login_attempt_count': '0'},allow_redirects=True)
     if 'logged_in_user' in r1.text:
